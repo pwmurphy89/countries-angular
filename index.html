@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body ng-controller="myController">
+
+<table border=1>
+	<thead>
+		<th>Country Name</th>
+		<th>Country Leader</th>
+		<th>Flag Colors</th>
+	</thead>
+	<tr ng-repeat="country in countries">
+		<td>{{country.name}}</td>
+		<td>{{country.president}}</td>
+		<td>{{country.flag}}</td>
+	</tr>
+	<form ng-submit="addCountry();">
+		Name:<input type="text" ng-model="name">
+		President:<input type="text" ng-model="president">
+		Flag Color:<input type="text" ng-model="flag">
+		<input type="submit" value="New Country">
+	</form>
+</table>
+	
+</body>
+</html>

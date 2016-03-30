@@ -1,6 +1,13 @@
 var myApp = angular.module('myApp', []);
 // console.log(myApp);
-myApp.controller('myController', function($scope){
+myApp.controller('myController', function($scope,$http){
+	$http.get("countries.js").success(function(dataWeGotBack){
+		console.log(dataWeGotBack);
+		$scope.countries = dataWeGotBack;
+	})
+
+
+
 	$scope.countries = [
 		{
 			name: "Bolivia",
@@ -65,5 +72,10 @@ myApp.controller('myController', function($scope){
 				flag: $scope.flag
 	}
 	)
+	}
+
+	$scope.removeCountry = function() {
+		$scope.countries.splice(i,1);
+
 	}
 });

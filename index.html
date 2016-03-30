@@ -8,19 +8,21 @@
 </head>
 <body ng-controller="myController">
 
+<input type="text" ng-model="sortInput">
+
 <table border=1>
 	<thead>
-		<th>Country Name</th>
+		<th><a href="" ng-click="sortField='name'; reverse = !reverse">Country Name</th>
 		<th>Country Leader</th>
 		<th>Flag Colors</th>
 	</thead>
-	<tr ng-repeat="country in countries">
-		<td>{{country.name}}</td>
+	<tr ng-repeat="country in countries | filter:sortInput | orderBy: 'name' track by $index">
+		<td><a href="" ng-click="removeCountry($index)">{{country.name}}</td>
 		<td>{{country.president}}</td>
 		<td>{{country.flag}}</td>
 	</tr>
 	<form ng-submit="addCountry();">
-		Name:<input type="text" ng-model="name">
+		<td>Name:<input type="text" ng-model="name">
 		President:<input type="text" ng-model="president">
 		Flag Color:<input type="text" ng-model="flag">
 		<input type="submit" value="New Country">
